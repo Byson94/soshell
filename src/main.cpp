@@ -1,3 +1,5 @@
+#include "lib.hpp"
+#include "shell.hpp"
 #include <iostream>
 #include <filesystem>
 
@@ -36,6 +38,11 @@ int main(int argc, char** argv) {
     if (!std::filesystem::exists(path)) {
         std::cerr << "[ERROR] Provided path does not exist.\n";
     }
+
+    Library lib(path);
+    Shell new_shell(lib);
+
+    new_shell.start_loop();
 
     return 0;
 }
